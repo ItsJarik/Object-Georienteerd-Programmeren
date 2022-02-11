@@ -1,4 +1,3 @@
-// ItsJarik
 #include <iostream>
 
 using namespace std;
@@ -32,7 +31,7 @@ void Breuk::verhoog(Breuk breuk)
     noemer = noemer * teller;
 }
 
-main()
+int main()
 {
     Breuk b;
     b.leesin();
@@ -40,5 +39,6 @@ main()
     b2.leesin();
     b.verhoog(b2);
     b.drukaf();
+
     return 0;
 }
