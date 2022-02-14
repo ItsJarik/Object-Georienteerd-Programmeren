@@ -7,6 +7,7 @@ class Tijd
 public:
     void displayTime();
     void getTime();
+    void calcDifferenceTime(Tijd T);
 
 private:
     int uren;
@@ -28,6 +29,26 @@ void Tijd::getTime()
     cin >> minuten;
 }
 
+void Tijd::calcDifferenceTime(Tijd T2)
+{
+    cout << T2.uren << endl;
+    if ((T2.uren > uren) && (T2.minuten > minuten))
+    {
+        int minuten_local = 0;
+        int uren_local = 0;
+
+        minuten_local = T2.minuten - minuten;
+        uren_local = T2.uren - uren;
+
+        cout << "Vershil in tijd is:" << endl;
+        cout << uren_local << " uur en " << minuten_local << " minuten." << endl;
+    }
+    else
+    {
+        cout << "Sorry, can't calculate the time" << endl;
+    }
+}
+
 int main()
 {
     Tijd Tijd1;
@@ -35,7 +56,8 @@ int main()
 
     Tijd1.getTime();
     Tijd2.getTime();
-    
+
+    Tijd1.calcDifferenceTime(Tijd2);
 
     return 0;
 }
