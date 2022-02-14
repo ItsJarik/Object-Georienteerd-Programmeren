@@ -9,17 +9,6 @@ struct Tijd
     int uren;
 } Tijd1, Tijd2;
 
-void giveTime(Tijd T)
-{
-    cout << "Geef aantal uren?" << endl;
-    cin >> T.uren;
-
-    cout << endl;
-
-    cout << "Geef aantal minuten?" << endl;
-    cin >> T.minuten;
-}
-
 bool statusCheck(Tijd T1, Tijd T2)
 {
     bool status = true;
@@ -59,8 +48,19 @@ void calcDifferenceTime(Tijd T1, Tijd T2)
 
 int main()
 {
-    giveTime(Tijd1);
-    giveTime(Tijd2);
+    cout << "Geef aantal uren?" << endl;
+    cin >> Tijd1.uren;
+
+    cout << "Geef aantal minuten?" << endl;
+    cin >> Tijd1.minuten;
+
+    cout << endl;
+
+    cout << "Geef aantal uren?" << endl;
+    cin >> Tijd2.uren;
+
+    cout << "Geef aantal minuten?" << endl;
+    cin >> Tijd2.minuten;
 
     calcDifferenceTime(Tijd1, Tijd2);
 
