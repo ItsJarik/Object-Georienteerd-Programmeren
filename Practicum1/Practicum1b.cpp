@@ -9,33 +9,24 @@ struct Tijd
     int uren;
 } Tijd1, Tijd2;
 
-bool statusCheck(Tijd T1, Tijd T2)
+void giveTime(Tijd *p)
 {
-    bool status = true;
+    cout << "Geef aantal uren?" << endl;
+    cin >> p->uren;
 
-    if ((T2.minuten < T1.minuten) || (T2.uren < T1.uren))
-    {
-        cout << "Warning! Tijd 2 is groter dan Tijd 1." << endl;
-        status = false;
-    }
-    else
-    {
-        cout << "No Warning!" << endl;
-        status = true;
-    }
-
-    return status;
+    cout << "Geef aantal minuten?" << endl;
+    cin >> p->minuten;
 }
 
-void calcDifferenceTime(Tijd T1, Tijd T2)
+void calcDifferenceTime(Tijd *p1, Tijd *p2)
 {
-    if (statusCheck(Tijd1, Tijd2) == true)
+    if ((p2->minuten > p1->minuten) || (p2->uren > p2->uren))
     {
         int minuten = 0;
         int uren = 0;
 
-        minuten = T2.minuten - T1.minuten;
-        uren = T2.uren - T1.uren;
+        minuten = p2->minuten - p1->minuten;
+        uren = p2->uren - p1->uren;
 
         cout << "Vershil in tijd is:" << endl;
         cout << uren << " uur en " << minuten << " minuten." << endl;
@@ -48,21 +39,10 @@ void calcDifferenceTime(Tijd T1, Tijd T2)
 
 int main()
 {
-    cout << "Geef aantal uren?" << endl;
-    cin >> Tijd1.uren;
+    giveTime(&Tijd1);
+    giveTime(&Tijd2);
 
-    cout << "Geef aantal minuten?" << endl;
-    cin >> Tijd1.minuten;
-
-    cout << endl;
-
-    cout << "Geef aantal uren?" << endl;
-    cin >> Tijd2.uren;
-
-    cout << "Geef aantal minuten?" << endl;
-    cin >> Tijd2.minuten;
-
-    calcDifferenceTime(Tijd1, Tijd2);
+    calcDifferenceTime(&Tijd1, &Tijd2);
 
     return 0;
 };
