@@ -5,43 +5,36 @@ using namespace std;
 class Tijd
 {
 public:
+    Tijd(int u, int m);
     void displayTime();
     void getTime();
-    void calcDifferenceTime(Tijd T);
+    void calcDifferenceTime(Tijd T1, Tijd T2);
 
 private:
     int uren;
     int minuten;
 };
 
+Tijd::Tijd(int u, int m)
+{
+    uren = u;
+    minuten = m;
+}
+
 void Tijd::displayTime()
 {
-    cout << uren << endl;
-    cout << minuten << endl;
+    cout << uren << " uur en " << minuten << " minuten." << endl;
 }
 
-void Tijd::getTime()
+void Tijd::calcDifferenceTime(Tijd T1, Tijd T2)
 {
-    cout << "Geef aantal uren?" << endl;
-    cin >> uren;
-
-    cout << "Geef aantal minuten?" << endl;
-    cin >> minuten;
-}
-
-void Tijd::calcDifferenceTime(Tijd T2)
-{
-    cout << T2.uren << endl;
-    if ((T2.uren > uren) && (T2.minuten > minuten))
+    if ((T2.uren > T1.uren) && (T2.minuten > T1.minuten))
     {
-        int minuten_local = 0;
-        int uren_local = 0;
+        minuten = T2.minuten - T1.minuten;
+        uren = T2.uren - T1.uren;
 
-        minuten_local = T2.minuten - minuten;
-        uren_local = T2.uren - uren;
-
-        cout << "Vershil in tijd is:" << endl;
-        cout << uren_local << " uur en " << minuten_local << " minuten." << endl;
+        cout << "Verschil in tijd:" << endl;
+        cout << uren << " uur en " << minuten << " minuten." << endl;
     }
     else
     {
@@ -51,13 +44,11 @@ void Tijd::calcDifferenceTime(Tijd T2)
 
 int main()
 {
-    Tijd Tijd1;
-    Tijd Tijd2;
+    Tijd T1(2, 12);
+    Tijd T2(6, 30);
+    Tijd T3(0, 0);
 
-    Tijd1.getTime();
-    Tijd2.getTime();
-
-    Tijd1.calcDifferenceTime(Tijd2);
+    T3.calcDifferenceTime(T1, T2);
 
     return 0;
 }

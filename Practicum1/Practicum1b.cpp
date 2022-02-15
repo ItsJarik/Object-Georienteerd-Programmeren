@@ -20,7 +20,7 @@ void giveTime(Tijd *p)
 
 void calcDifferenceTime(Tijd *p1, Tijd *p2)
 {
-    if ((p2->minuten > p1->minuten) || (p2->uren > p2->uren))
+    if ((p2->minuten > p1->minuten) && (p2->uren > p2->uren))
     {
         int minuten = 0;
         int uren = 0;
