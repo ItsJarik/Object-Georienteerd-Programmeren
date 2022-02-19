@@ -9,6 +9,7 @@ public:
     Length(int i);
     void drukaf_imperial();
     void drukaf_metric();
+    void drukaf_distance(Length d);
 
 private:
     int feet;
@@ -23,7 +24,8 @@ Length::Length(int f, int i)
 
 Length::Length(int i)
 {
-    inches = i;
+    feet = i / 12;
+    inches = i % 12;
 }
 
 void Length::drukaf_imperial()
@@ -41,10 +43,18 @@ void Length::drukaf_metric()
     cout << "Centimeter: " << inches * centimeter << endl;
 }
 
+void Length::drukaf_distance(Length d)
+{
+
+    cout << "Verschil in afstand is: " << endl;
+    cout << "Feet: " << feet << endl;
+    cout << "Inches" << inches << endl;
+}
+
 int main()
 {
     Length d1(1, 2);
+    Length d2(68);
 
-    d1.drukaf_imperial();
-    d1.drukaf_metric();
+    d2.drukaf_imperial();
 }
