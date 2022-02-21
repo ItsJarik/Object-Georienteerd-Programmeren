@@ -45,16 +45,21 @@ void Length::drukaf_metric()
 
 void Length::drukaf_distance(Length d)
 {
+    int feet_lokaal = 0;
+    int inches_lokaal = 0;
+
+    feet_lokaal = d.feet - feet;
+    inches_lokaal = d.inches - inches;
 
     cout << "Verschil in afstand is: " << endl;
-    cout << "Feet: " << feet << endl;
-    cout << "Inches" << inches << endl;
+    cout << "Feet: " << feet_lokaal << endl;
+    cout << "Inches: " << inches_lokaal << endl;
 }
 
 int main()
 {
     Length d1(1, 2);
-    Length d2(68);
+    Length d2(2, 4);
 
-    d2.drukaf_imperial();
+    d1.drukaf_distance(d2);
 }
