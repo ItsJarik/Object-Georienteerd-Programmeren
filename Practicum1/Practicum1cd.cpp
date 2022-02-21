@@ -7,12 +7,14 @@ class Tijd
 public:
     Tijd(int u, int m);
     void displayTime();
-    void getTime();
+    void displayMinute();
+    void verhoog(int m);
     void calcDifferenceTime(Tijd T1, Tijd T2);
 
 private:
     int uren;
     int minuten;
+    int tijd_in_minuten;
 };
 
 Tijd::Tijd(int u, int m)
@@ -21,9 +23,19 @@ Tijd::Tijd(int u, int m)
     minuten = m;
 }
 
+void Tijd::verhoog(int m)
+{
+    tijd_in_minuten = minuten + (uren * 60) + m;
+}
+
 void Tijd::displayTime()
 {
     cout << uren << " uur en " << minuten << " minuten." << endl;
+}
+
+void Tijd::displayMinute()
+{
+    cout << tijd_in_minuten << " minuten" << endl;
 }
 
 void Tijd::calcDifferenceTime(Tijd T1, Tijd T2)
@@ -44,11 +56,11 @@ void Tijd::calcDifferenceTime(Tijd T1, Tijd T2)
 
 int main()
 {
-    Tijd T1(2, 12);
+    Tijd T1(2, 10);
     Tijd T2(6, 30);
-    Tijd T3(0, 0);
 
-    T3.calcDifferenceTime(T1, T2);
+    T1.verhoog(2);
+    T1.displayMinute();
 
     return 0;
 }
