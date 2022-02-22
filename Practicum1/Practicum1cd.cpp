@@ -60,7 +60,7 @@ int main()
     Tijd T2(6, 30);
 
     T1.verhoog(2);
-    T1.displayMinute();
+    T1.displayMinute();dfdfdf
 
     return 0;
 }
