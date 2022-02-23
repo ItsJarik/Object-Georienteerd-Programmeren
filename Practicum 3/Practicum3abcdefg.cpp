@@ -2,13 +2,13 @@
 
 using namespace std;
 
+// Nog niet klaar
+
 class Length
 {
 public:
-    Length();
     Length(int f, int i);
     Length(int i);
-    void leesIn();
     void drukaf_imperial();
     void drukaf_metric();
     void drukaf_distance(Length d);
@@ -17,10 +17,6 @@ private:
     int feet;
     int inches;
 };
-
-Length::Length()
-{
-}
 
 Length::Length(int f, int i)
 {
@@ -32,14 +28,6 @@ Length::Length(int i)
 {
     feet = i / 12;
     inches = i % 12;
-}
-
-void Length::leesIn()
-{
-    cout << "Vul feet in: " << endl;
-    cin >> feet;
-    cout << "Vul inches in:" << endl;
-    cin >> inches;
 }
 
 void Length::drukaf_imperial()
@@ -72,9 +60,8 @@ void Length::drukaf_distance(Length d)
 
 int main()
 {
-    Length L1;
+    Length d1(1, 2);
+    Length d2(2, 4);
 
-    L1.leesIn();
-
-    L1.drukaf_imperial();
+    d1.drukaf_distance(d2);
 }
