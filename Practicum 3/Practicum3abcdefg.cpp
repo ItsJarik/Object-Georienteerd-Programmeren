@@ -193,9 +193,10 @@ int main()
     // Opdracht 4
 
     Length length1(8, 6);
-    Length length2(12, 5);
+    Length length2(2, 7);
 
     length1.maak_gelijk(length2);
+    length2.maak_gelijk(length1);
 
     length1.drukaf_imperial();
     length2.drukaf_imperial();
