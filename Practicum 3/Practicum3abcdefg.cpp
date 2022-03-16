@@ -13,7 +13,9 @@ public:
     int smallest(int centi);
     float centimeters();
     void maak_gelijk(Length L);
-    Length largest(Length L)
+    int returnCentimeter();
+
+    Length largest(Length L, Length L2)
     {
         Length newLength;
 
@@ -63,13 +65,16 @@ Length::Length(int f, int i)
 
 int Length::smallest(int centi)
 {
-    if (centimeter < centi)
+    int centimeter1 = ((feet * 12) * 2.54) + (inches * 2.54);
+    int centimeter2 = centi;
+
+    if (centimeter1 < centimeter2)
     {
-        return centimeter;
+        return centimeter1;
     }
     else
     {
-        return centi;
+        return centimeter2;
     }
 }
 
@@ -89,17 +94,34 @@ float Length::centimeters()
 
 void Length::maak_gelijk(Length L)
 {
-    if (feet > L.feet)
+    if (((feet * 12) + inches) > ((L.feet * 12) + L.inches))
     {
+        cout << ((feet * 12) + inches) << endl;
+        cout << ((L.feet * 12) + L.inches) << endl;
+
         feet = L.feet;
         inches = L.inches;
     }
-    else
+
+    if (((L.feet * 12) + L.inches) > ((feet * 12) + inches))
     {
+        cout << ((feet * 12) + inches) << endl;
+        cout << ((L.feet * 12) + L.inches) << endl;
+
         L.feet = feet;
         L.inches = inches;
     }
+
 } // De waardes van de grootste lengte worden verandert naar de waardes van de kleinste lengte
+
+int Length::returnCentimeter()
+{
+    int centimeter;
+
+    centimeter = ((feet * 12) * 2.54) + (inches * 2.54);
+
+    return centimeter;
+}
 
 void Length::drukaf_imperial()
 {
@@ -137,19 +159,26 @@ int main()
     Length d1(1, 2);
     Length d2(2, 4);
     Length d3;
+    Length d4(6,9);
 
-    d3 = d1.largest(d2);
+    d3 = d2.largest(d1,d4);
+
+    d3.drukaf_imperial();
     */
 
     // Opdracht 2
 
     /*
-    Length C(10);
-    int centimeter;
+    Length C1(1, 3);
+    Length C2(2, 5);
 
-    centimeter = C.smallest(5);
+    int centimeter1;
+    int centimeter2 = C2.returnCentimeter();
+    int centimeterTotaal;
 
-    cout << centimeter << endl;
+    centimeterTotaal = C1.smallest(centimeter2);
+
+    cout << centimeterTotaal << endl;
     */
 
     // Opdracht 3
@@ -163,14 +192,13 @@ int main()
 
     // Opdracht 4
 
-    /*
     Length length1(8, 6);
-    Length length2(2, 4);
+    Length length2(12, 5);
 
     length1.maak_gelijk(length2);
+
     length1.drukaf_imperial();
     length2.drukaf_imperial();
-    */
 
     // Opdracht 5
 

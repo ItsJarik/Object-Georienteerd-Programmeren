@@ -5,6 +5,7 @@ using namespace std;
 class Rechthoek
 {
 public:
+    // Constructors
     Rechthoek();
     Rechthoek(int l, int b);
 
@@ -73,13 +74,13 @@ int main()
 {
     // Opdracht 1
 
-    /*
+    
     // Wordt een object van de klasse vierkant aangemaakt
     Rechthoek R(2, 4);
 
     // Print alle waarde van de private attributes uit
     R.showValue();
-    */
+    
 
     // Opdracht 2
 
