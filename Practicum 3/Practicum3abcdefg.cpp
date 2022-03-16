@@ -36,8 +36,20 @@ public:
     Length operator+(Length const &L)
     {
         Length newLength;
+
         newLength.feet = feet + L.feet;
         newLength.inches = inches + L.inches;
+
+        return newLength;
+    }
+
+    Length operator-(Length const &L)
+    {
+        Length newLength;
+
+        newLength.feet = feet - L.feet;
+        newLength.inches = inches - L.inches;
+
         return newLength;
     }
 
@@ -192,6 +204,7 @@ int main()
 
     // Opdracht 4
 
+    /*
     Length length1(8, 6);
     Length length2(2, 7);
 
@@ -200,20 +213,19 @@ int main()
 
     length1.drukaf_imperial();
     length2.drukaf_imperial();
+    */
 
     // Opdracht 5
 
     /*
     Length l1(1, 4);
     Length l2(2, 6);
-    Length l3 = l1 + l2;
+    Length l3 = l1 - l2;
 
     l3.drukaf_imperial();
     */
 
     // Opdracht 6 & 7
 
-    /*
     Voorwerp V(&d2);
-    */
 }
