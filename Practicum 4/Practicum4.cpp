@@ -2,6 +2,7 @@
 
 using namespace std;
 
+// MainClass Rechthoek
 class Rechthoek
 {
 public:
@@ -23,9 +24,17 @@ public:
     int Oppervlakte();
     void showValue();
 
-private:
+protected:
     int lengte;
     int breedte;
+};
+
+// SubClass Vierkant
+class Vierkant : public Rechthoek
+{
+public:
+    Vierkant(int l, int b);
+    void showValue();
 };
 
 Rechthoek::Rechthoek()
@@ -33,6 +42,12 @@ Rechthoek::Rechthoek()
 }
 
 Rechthoek::Rechthoek(int l, int b)
+{
+    lengte = l;
+    breedte = b;
+}
+
+Vierkant::Vierkant(int l, int b)
 {
     lengte = l;
     breedte = b;
@@ -70,17 +85,23 @@ void Rechthoek::showValue()
     cout << "Breedte: " << breedte << endl;
 }
 
+void Vierkant::showValue()
+{
+    cout << "Lengte: " << lengte << endl;
+    cout << "Breedte: " << breedte << endl;
+}
+
 int main()
 {
     // Opdracht 1
 
-    
+    /*
     // Wordt een object van de klasse vierkant aangemaakt
     Rechthoek R(2, 4);
 
     // Print alle waarde van de private attributes uit
     R.showValue();
-    
+    */
 
     // Opdracht 2
 
@@ -115,6 +136,12 @@ int main()
 
     R5.showValue();
     */
+
+    // Opdracht 5
+
+    Vierkant R6(3, 3);
+
+    R6.showValue();
 
     return 0;
 }
