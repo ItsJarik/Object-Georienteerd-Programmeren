@@ -11,7 +11,7 @@ class VasteKrachten : public Ontwerper
 public:
     VasteKrachten(int mS);
 
-private:
+protected:
     int maandSalaris;
 };
 
@@ -36,11 +36,28 @@ Freelancers::Freelancers(int gU, int u)
     uurtarief = u;
 }
 
+void drukAfSalarisVasteKrachten(VasteKrachten *V)
+{
+    cout << "Salaris: " << V->maandSalaris << endl;
+}
+
+void drukAfSalarisFreelancer(Freelancers *F)
+{
+    cout << "Salaris: " << F->gewerkteUren * F->uurtarief << endl;
+}
+
 int main()
 {
 
-    VasteKrachten V1(3000);
-    Freelancers F1(150, 80);
+    // Opdracht 2
+
+    VasteKrachten *V1 = new VasteKrachten(3000);
+    Freelancers *F1 = new Freelancers(150, 80);
+
+    drukAfSalarisVasteKrachten(&V1);
+
+    delete V1;
+    delete F1;
 
     return 0;
 }
