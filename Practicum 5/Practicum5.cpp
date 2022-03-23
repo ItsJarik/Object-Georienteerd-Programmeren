@@ -14,12 +14,19 @@ protected:
     int breedte;
 };
 
+int Vorm::Oppervlakte()
+{
+    // Return Oppervlakte
+    return lengte * breedte;
+}
+
 // 1e Derived Class
 class Rechthoek : public Vorm
 {
 public:
     Rechthoek();
-    Rechthoek(int l, int b);
+    Rechthoek(const int l, const int b);
+    int Oppervlakte() override;
 
 private:
 protected:
@@ -31,7 +38,7 @@ Rechthoek::Rechthoek()
 }
 
 // Customize Constructor
-Rechthoek::Rechthoek(int l, int b)
+Rechthoek::Rechthoek(const int l, const int b)
 {
     lengte = l;
     breedte = b;
@@ -45,7 +52,7 @@ private:
 protected:
 };
 
-int Vorm::Oppervlakte()
+int Rechthoek::Oppervlakte()
 {
     // Return Oppervlakte
     return lengte * breedte;
@@ -53,6 +60,7 @@ int Vorm::Oppervlakte()
 
 int main()
 {
+
     // Opdracht 2
 
     Rechthoek r1(3, 2);
@@ -66,11 +74,11 @@ int main()
     // Opdracht 3
 
     // Refernce, geen copy constructor want er treedt slicing op
-    Vorm &v1 = r1;
+    Vorm *v1 = &r1;
 
     int value1;
 
-    value1 = v1.Oppervlakte();
+    value1 = v1->Oppervlakte();
 
     cout << "Value1: " << value1 << endl;
 
@@ -93,6 +101,16 @@ int main()
     // Wordt hierboven aangepast voor Klasse rechthoek is een default en customize constructor aangemaakt en die wordt vervolgens gebruikt om de protected attributes in de Klasse vorm de pakken
 
     // Opdracht 6
+
+    // Opdracht 7
+
+    int value4;
+
+    Vorm *vp = &r1;
+
+    value4 = vp->Oppervlakte();
+
+    cout << "Value4: " << value4 << endl;
 
     return 0;
 }
