@@ -2,16 +2,24 @@
 
 using namespace std;
 
+// Abstract
 class Ontwerper
 {
+public:
+    // Pure Virtual Function
+    virtual void printSalaris() = 0;
 };
 
 class VasteKrachten : public Ontwerper
 {
 public:
     VasteKrachten(int mS);
+    void printSalaris()
+    {
+        cout << "Salaris :" << maandSalaris << endl;
+    }
 
-protected:
+private:
     int maandSalaris;
 };
 
@@ -24,6 +32,10 @@ class Freelancers : public Ontwerper
 {
 public:
     Freelancers(int gU, int u);
+    void printSalaris()
+    {
+        cout << "Salaris :" << gewerkteUren * uurtarief << endl;
+    }
 
 private:
     int gewerkteUren;
@@ -36,14 +48,9 @@ Freelancers::Freelancers(int gU, int u)
     uurtarief = u;
 }
 
-void drukAfSalarisVasteKrachten(VasteKrachten *V)
+void printSalaris(Ontwerper &O)
 {
-    cout << "Salaris: " << V->maandSalaris << endl;
-}
-
-void drukAfSalarisFreelancer(Freelancers *F)
-{
-    cout << "Salaris: " << F->gewerkteUren * F->uurtarief << endl;
+    O.printSalaris();
 }
 
 int main()
@@ -51,13 +58,14 @@ int main()
 
     // Opdracht 2
 
-    VasteKrachten *V1 = new VasteKrachten(3000);
-    Freelancers *F1 = new Freelancers(150, 80);
+    Ontwerper *V = new VasteKrachten(3000);
+    Ontwerper *F = new Freelancers(150, 80);
 
-    drukAfSalarisVasteKrachten(&V1);
+    printSalaris(*V);
+    printSalaris(*F);
 
-    delete V1;
-    delete F1;
+    delete V;
+    delete F;
 
     return 0;
 }
