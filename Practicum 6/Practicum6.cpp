@@ -8,6 +8,14 @@ class Ontwerper
 public:
     // Pure Virtual Function
     virtual void printSalaris() = 0;
+    virtual void berekenTotaleKosten() = 0;
+    void totaleKosten(Ontwerper &freelancer)
+    {
+        cout << (freelancer.maandSalarisTotaal + maandSalarisTotaal) << endl;
+    }
+
+protected:
+    int maandSalarisTotaal;
 };
 
 class VasteKrachten : public Ontwerper
@@ -17,6 +25,10 @@ public:
     void printSalaris()
     {
         cout << "Salaris :" << maandSalaris << endl;
+    }
+    void berekenTotaleKosten()
+    {
+        maandSalarisTotaal = maandSalaris;
     }
 
 private:
@@ -35,6 +47,10 @@ public:
     void printSalaris()
     {
         cout << "Salaris :" << gewerkteUren * uurtarief << endl;
+    }
+    void berekenTotaleKosten()
+    {
+        maandSalarisTotaal = (gewerkteUren * uurtarief);
     }
 
 private:
@@ -57,12 +73,19 @@ int main()
 {
 
     // Opdracht 2
-
     Ontwerper *V = new VasteKrachten(3000);
     Ontwerper *F = new Freelancers(150, 80);
 
+    // Opdracht 3
+
     printSalaris(*V);
     printSalaris(*F);
+
+    V->berekenTotaleKosten();
+    F->berekenTotaleKosten();
+
+    // Opdracht 4
+    V->totaleKosten(*F);
 
     delete V;
     delete F;
