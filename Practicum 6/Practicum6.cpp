@@ -16,6 +16,11 @@ public:
 
 protected:
     int maandSalarisTotaal;
+
+    int maandSalaris;
+
+    int gewerkteUren;
+    int uurtarief;
 };
 
 class VasteKrachten : public Ontwerper
@@ -30,9 +35,6 @@ public:
     {
         maandSalarisTotaal = maandSalaris;
     }
-
-private:
-    int maandSalaris;
 };
 
 VasteKrachten::VasteKrachten(int mS)
@@ -52,10 +54,6 @@ public:
     {
         maandSalarisTotaal = (gewerkteUren * uurtarief);
     }
-
-private:
-    int gewerkteUren;
-    int uurtarief;
 };
 
 Freelancers::Freelancers(int gU, int u)
