@@ -57,7 +57,7 @@ public:
     Freelancers(int gU, int u);
     void printSalaris()
     {
-        cout << "Salaris :" << gewerkteUren * uurtarief << endl;
+        cout << "Salaris :" << maandSalarisFreelancer << endl;
     }
     int berekenSalaris()
     {
@@ -97,9 +97,6 @@ int main()
     printSalaris(*F);
 
     // Opdracht 4
-    V->berekenSalaris();
-    F->berekenSalaris();
-
     V->partners(F);
     V->totaleKosten();
 
