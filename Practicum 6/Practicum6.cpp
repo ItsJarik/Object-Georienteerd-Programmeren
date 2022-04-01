@@ -8,19 +8,23 @@ class Ontwerper
 public:
     // Pure Virtual Function
     virtual void printSalaris() = 0;
-    virtual void berekenTotaleKosten() = 0;
-    void totaleKosten(Ontwerper &freelancer)
+    virtual int berekenSalaris() = 0;
+    void partners(Ontwerper *O1)
     {
-        cout << (freelancer.maandSalarisTotaal + maandSalarisTotaal) << endl;
+        partner = O1;
+    }
+    void totaleKosten()
+    {
+        maandSalarisTotaal = berekenSalaris() + partner->berekenSalaris();
+        cout << maandSalarisTotaal << endl;
     }
 
 protected:
+    // Partner Object
+    Ontwerper *partner;
+
+    // Salaris Vastekracht + Freelancer
     int maandSalarisTotaal;
-
-    int maandSalaris;
-
-    int gewerkteUren;
-    int uurtarief;
 };
 
 class VasteKrachten : public Ontwerper
@@ -29,17 +33,22 @@ public:
     VasteKrachten(int mS);
     void printSalaris()
     {
-        cout << "Salaris :" << maandSalaris << endl;
+        cout << "Salaris :" << maandSalarisVastekracht << endl;
     }
-    void berekenTotaleKosten()
+    int berekenSalaris()
     {
-        maandSalarisTotaal = maandSalaris;
+        return maandSalarisVastekracht;
     }
+
+private:
+    // Salaris Vastekracht
+    int maandSalarisVastekracht;
 };
 
+// Customized Constructor
 VasteKrachten::VasteKrachten(int mS)
 {
-    maandSalaris = mS;
+    maandSalarisVastekracht = mS;
 }
 
 class Freelancers : public Ontwerper
@@ -50,16 +59,24 @@ public:
     {
         cout << "Salaris :" << gewerkteUren * uurtarief << endl;
     }
-    void berekenTotaleKosten()
+    int berekenSalaris()
     {
-        maandSalarisTotaal = (gewerkteUren * uurtarief);
+        return maandSalarisFreelancer;
     }
+
+private:
+    // Salaris Freelancer
+    int gewerkteUren;
+    int uurtarief;
+    int maandSalarisFreelancer;
 };
 
+// Customized Constructor
 Freelancers::Freelancers(int gU, int u)
 {
     gewerkteUren = gU;
     uurtarief = u;
+    maandSalarisFreelancer = gU * u;
 }
 
 void printSalaris(Ontwerper &O)
@@ -71,19 +88,20 @@ int main()
 {
 
     // Opdracht 2
-    Ontwerper *V = new VasteKrachten(3000);
-    Ontwerper *F = new Freelancers(150, 80);
+    VasteKrachten *V = new VasteKrachten(3000);
+    Freelancers *F = new Freelancers(150, 80);
 
     // Opdracht 3
 
     printSalaris(*V);
     printSalaris(*F);
 
-    V->berekenTotaleKosten();
-    F->berekenTotaleKosten();
-
     // Opdracht 4
-    V->totaleKosten(*F);
+    V->berekenSalaris();
+    F->berekenSalaris();
+
+    V->partners(F);
+    V->totaleKosten();
 
     delete V;
     delete F;
